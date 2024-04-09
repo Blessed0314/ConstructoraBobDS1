@@ -11,12 +11,6 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = UsuarioSerializer
 
-    def destroy(self, request, *args, **kwargs):
-        usuario = self.get_object()
-        usuario.usuariodelete = not usuario.usuariodelete
-        usuario.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
 class TipoIdentificacionViewSet(viewsets.ModelViewSet):
     queryset = TipoIdentificacion.objects.all()
     permission_classes = [
