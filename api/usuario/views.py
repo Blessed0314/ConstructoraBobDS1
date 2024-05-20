@@ -1,14 +1,13 @@
 # views.py
-
 import requests
-from django.conf import settings
+from decouple import config
 from django.http import JsonResponse
 
 def verificar_captcha(request):
     token = request.POST.get('token', '')
     recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
     payload = {
-        'secret': "6LfrtLMpAAAAALPq_m-OnzjOj2t9zHH6kpxuT3YI",
+        'secret': config('RECAPTCHA_PRIVATE_KEY'),
         'response': token,
         'remoteip': request.META.get('REMOTE_ADDR', ''),
     }
