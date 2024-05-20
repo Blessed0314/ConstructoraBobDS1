@@ -1,0 +1,203 @@
+<div class="registration-form animated fadeIn">
+  <form #registroForm="ngForm">
+      <div class="form-icon">
+          <span><i class="icon icon-user"></i></span>
+      </div>
+      <div>
+          <h1 class="form-title">Constructora Bob</h1>
+          <h3 class="form-title">Registro de Usuarios</h3>
+      </div>
+
+      <div class="form-group">
+          <input  type="text" 
+                  class="form-control item" 
+                  id="nombres" 
+                  name="nombres"
+                  placeholder="Nombres" 
+                  required 
+                  [(ngModel)]="datos.nombre"
+                  pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"
+                  maxlength="15"
+                  [class.is-invalid] = "registroForm.controls['nombres']?.errors?.['required'] && registroForm.controls['nombres'].dirty"
+          >
+          <div *ngIf="registroForm.controls['nombres'].invalid && (registroForm.controls['nombres'].dirty || registroForm.controls['nombres'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['nombres']?.errors?.['required']">
+                Por favor, ingresa tu nombre.
+            </div>
+            <div *ngIf="registroForm.controls['nombres']?.errors?.['pattern']">
+              Solo se permiten letras en el nombre.
+            </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <input  type="text" 
+                  class="form-control item" 
+                  id="apellidos" 
+                  name="apellidos" 
+                  placeholder="Apellidos" 
+                  required 
+                  [(ngModel)]="datos.apellido"
+                  pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"
+                  [class.is-invalid] = "registroForm.controls['apellidos']?.errors?.['required'] && registroForm.controls['apellidos'].dirty"
+          >
+          <div *ngIf="registroForm.controls['apellidos'].invalid && (registroForm.controls['apellidos'].dirty || registroForm.controls['apellidos'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['apellidos']?.errors?.['required']">
+                Por favor, ingresa tu apellido.
+            </div>
+            <div *ngIf="registroForm.controls['apellidos']?.errors?.['pattern']">
+              Solo se permiten letras en el apellido.
+          </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <select class="form-select form-control item" id="tipoDeUsuario" name="tipoDeUsuario" aria-label="Default select example" required [(ngModel)]="datos.tipoUsuario">
+          <option disabled >Selecciona el tipo de usuario</option>
+          <option *ngFor="let usuario of tipoUsuario" [value]="usuario.nombre">{{usuario.nombre}}</option>
+        </select>
+        <div *ngIf="registroForm.controls['tipoDeUsuario'].invalid && (registroForm.controls['tipoDeUsuario'].dirty || registroForm.controls['tipoDeUsuario'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['tipoDeUsuario']?.errors?.['required']">
+                Por favor, selecciona el tipo de usuario.
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <input type="text" 
+                class="form-control item" 
+                id="numIdentificacion" 
+                name="numIdentificacion" 
+                placeholder="Número de identificación" 
+                required 
+                [(ngModel)]="datos.noIdentificacion"
+                pattern="[0-9]*"
+                [class.is-invalid] = "registroForm.controls['numIdentificacion']?.errors?.['required'] && registroForm.controls['numIdentificacion'].dirty"
+          >
+          <div *ngIf="registroForm.controls['numIdentificacion'].invalid && (registroForm.controls['numIdentificacion'].dirty || registroForm.controls['numIdentificacion'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['numIdentificacion']?.errors?.['required']">
+                Por favor, ingresa tu número de identificación.
+            </div>
+            <div *ngIf="registroForm.controls['numIdentificacion']?.errors?.['pattern']">
+                El número de identificación solo puede contener números.
+            </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <input type="text" 
+                class="form-control item" 
+                id="username" 
+                name="username" 
+              placeholder="Usuario" 
+                required 
+                [(ngModel)]="datos.username"
+                [class.is-invalid] = "registroForm.controls['username']?.errors?.['required'] && registroForm.controls['username'].dirty"
+          >
+          <div *ngIf="registroForm.controls['username'].invalid && (registroForm.controls['username'].dirty || registroForm.controls['username'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['username']?.errors?.['required']">
+                Por favor, ingresa tu nombre de usuario.
+            </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <input type="password" 
+                class="form-control item" 
+                id="password" 
+                name="password" 
+                placeholder="Contraseña" 
+                required 
+                [(ngModel)]="datos.password"
+                [class.is-invalid] = "registroForm.controls['password']?.errors?.['required'] && registroForm.controls['password'].dirty"
+          >
+          <div *ngIf="registroForm.controls['password'].invalid && (registroForm.controls['password'].dirty || registroForm.controls['password'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['password']?.errors?.['required']">
+                Por favor, ingresa tu contraseña.
+            </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <select class="form-select form-control item" id="genero" name="genero" aria-label="Default select example" required [(ngModel)]="datos.genero">
+          <option disabled >Selecciona tu Género</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <div *ngIf="registroForm.controls['genero'].invalid && (registroForm.controls['genero'].dirty || registroForm.controls['genero'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['genero']?.errors?.['required']">
+                Por favor, selecciona tu género.
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <input type="text" 
+              class="form-control item" 
+              id="direccion" 
+              name="direccion" 
+              placeholder="Dirección" 
+              required 
+              [(ngModel)]="datos.direccion"
+              [class.is-invalid] = "registroForm.controls['direccion']?.errors?.['required'] && registroForm.controls['direccion'].dirty"
+          >
+          <div *ngIf="registroForm.controls['direccion'].invalid && (registroForm.controls['direccion'].dirty || registroForm.controls['direccion'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['direccion']?.errors?.['required']">
+                Por favor, ingresa tu dirección.
+            </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" 
+              class="form-control item" 
+              id="celular" 
+              name="celular" 
+              placeholder="Número de Celular" 
+              required 
+              [(ngModel)]="datos.noCelular"
+              pattern="[0-9]*"
+              [class.is-invalid] = "registroForm.controls['celular']?.errors?.['required'] && registroForm.controls['celular'].dirty"
+        >
+        <div *ngIf="registroForm.controls['celular'].invalid && (registroForm.controls['celular'].dirty || registroForm.controls['celular'].touched)" class="alert alert-danger">
+          <div *ngIf="registroForm.controls['celular']?.errors?.['required']">
+              Por favor, ingresa tu número de celular.
+          </div>
+          <div *ngIf="registroForm.controls['celular']?.errors?.['pattern']">
+              El número de celular solo puede contener números.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <select class="form-select form-control item" id="tipoDeIdentidad" name="tipoDeIdentidad" aria-label="Default select example" required [(ngModel)]="datos.tipoIdentID" >
+          <option  disabled> Selecciona el tipo de identificación</option>
+          <option *ngFor="let identidad of tipoIdentidad" [value]="identidad.tipoIdentID" >{{identidad.nombre}}</option>
+        </select>
+        <div *ngIf="registroForm.controls['tipoDeIdentidad'].invalid && (registroForm.controls['tipoDeIdentidad'].dirty || registroForm.controls['tipoDeIdentidad'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['tipoDeIdentidad']?.errors?.['required']">
+                Por favor, selecciona el tipo de identificación.
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group m-5">
+        <h4 class="text-center">Foto</h4>
+        <ngx-dropzone (change)="onSelect($event)">
+          <ngx-dropzone-label>Ingresa o suelta tu imagen</ngx-dropzone-label>
+          <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
+      </div>
+      
+      <div class="form-group btn-class">
+          <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarUsuario()" > 
+            {{isLoading ? 'Guardando...' : 'Registrar Usuario'}}
+          </button>
+      </div>
+
+  </form>
+
+</div>
