@@ -9,6 +9,7 @@ import { UserDetailComponent } from './components/gerente/user-detail/user-detai
 
 import { GerenteGuard} from './guards/gerente.guard';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
+import { DirectorObraGuard } from './guards/director-obra.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent, canActivate: [GerenteGuard]},
     {path: 'users', component: UsersComponent, canActivate: [GerenteGuard]},
     {path: 'userDetail/:id', component: UserDetailComponent,  canActivate: [GerenteGuard]},
-    {path: 'obras', component:ObrasComponent, canActivate: [GerenteGuard]},
+    {path: 'obras', component:ObrasComponent, canActivate: [GerenteGuard,DirectorObraGuard]},
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: '**' , pathMatch: 'full', redirectTo: 'home'}
   ]},

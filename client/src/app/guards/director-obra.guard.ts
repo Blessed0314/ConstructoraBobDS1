@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GerenteGuard implements CanActivate {
+export class DirectorObraGuard implements CanActivate {
 
   constructor(private router: Router){}
 
@@ -12,7 +12,7 @@ export class GerenteGuard implements CanActivate {
 
     const role = JSON.parse(localStorage.getItem('user') || '{}').data.tipoUsuario;
 
-    if(role === 'Gerente'){
+    if(role === 'Director de Obra'){
       return true;
     }else{
       this.router.navigate(['/dashboard']);
