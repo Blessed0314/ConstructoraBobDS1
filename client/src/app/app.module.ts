@@ -25,6 +25,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersComponent } from './components/gerente/users/users.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
+import { ObrasComponent } from './components/gerente/obras/obras.component';
 
 
 
@@ -41,6 +42,7 @@ import { UserDetailComponent } from './components/gerente/user-detail/user-detai
     UsersComponent,
     LoadingComponent,
     UserDetailComponent,
+    ObrasComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,11 +9,11 @@
       </div>
 
       <div class="form-group">
-          <input  type="text" 
-                  class="form-control item" 
-                  id="nombres" 
-                  name="nombres" 
-                  [placeholder]="datos.nombre" 
+          <input  type="text"
+                  class="form-control item"
+                  id="nombres"
+                  name="nombres"
+                  [placeholder]="datos.nombre"
                   [(ngModel)]="datos.nombre"
                   maxlength="15"
                   (change)="validarNombre()"
@@ -21,11 +21,11 @@
               </div>
 
       <div class="form-group">
-          <input  type="text" 
-                  class="form-control item" 
-                  id="apellidos" 
-                  name="apellidos" 
-                  placeholder="Apellidos" 
+          <input  type="text"
+                  class="form-control item"
+                  id="apellidos"
+                  name="apellidos"
+                  placeholder="Apellidos"
                   [(ngModel)]="datos.apellido"
           >
       </div>
@@ -38,22 +38,22 @@
       </div>
 
       <div class="form-group">
-          <input type="text" 
-                class="form-control item" 
-                id="noIdentificacion" 
-                name="noIdentificacion" 
-                [placeholder]="datos.noIdentificacion" 
+          <input type="text"
+                class="form-control item"
+                id="noIdentificacion"
+                name="noIdentificacion"
+                [placeholder]="datos.noIdentificacion"
                 [(ngModel)]="datos.noIdentificacion"
           >
         </div>
 
       <div class="form-group">
-          <input type="text" 
-                class="form-control item" 
-                id="username" 
-                name="username" 
-              placeholder="Usuario" 
-                required 
+          <input type="text"
+                class="form-control item"
+                id="username"
+                name="username"
+              placeholder="Usuario"
+                required
                 [(ngModel)]="datos.username"
           >
           <div *ngIf="registroForm.controls['username']?.invalid && (registroForm.controls['username'].dirty || registroForm.controls['username'].touched)" class="alert alert-danger">
@@ -64,12 +64,12 @@
       </div>
 
       <div class="form-group">
-          <input type="password" 
-                class="form-control item" 
-                id="password" 
-                name="password" 
-                placeholder="Contraseña" 
-                required 
+          <input type="password"
+                class="form-control item"
+                id="password"
+                name="password"
+                placeholder="Contraseña"
+                required
                 [(ngModel)]="datos.password"
           >
           <div *ngIf="registroForm.controls['password']?.invalid && (registroForm.controls['password'].dirty || registroForm.controls['password'].touched)" class="alert alert-danger">
@@ -94,12 +94,12 @@
       </div>
 
       <div class="form-group">
-          <input type="text" 
-              class="form-control item" 
-              id="direccion" 
-              name="direccion" 
-              placeholder="Dirección" 
-              required 
+          <input type="text"
+              class="form-control item"
+              id="direccion"
+              name="direccion"
+              placeholder="Dirección"
+              required
               [(ngModel)]="datos.direccion"
           >
           <div *ngIf="registroForm.controls['direccion']?.invalid && (registroForm.controls['direccion'].dirty || registroForm.controls['direccion'].touched)" class="alert alert-danger">
@@ -110,16 +110,16 @@
       </div>
 
       <div class="form-group">
-        <input type="text" 
-              class="form-control item" 
-              id="celular" 
-              name="celular" 
-              placeholder="Número de Celular" 
-              required 
+        <input type="text"
+              class="form-control item"
+              id="celular"
+              name="celular"
+              placeholder="Número de Celular"
+              required
               [(ngModel)]="datos.noCelular"
               pattern="[0-9]*"
           >
-        
+
       </div>
 
       <div class="form-group">
@@ -143,9 +143,9 @@
           </ngx-dropzone-preview>
         </ngx-dropzone>
       </div>
-      
+
       <div class="form-group btn-class">
-          <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarUsuario()" > 
+          <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarUsuario()" >
             {{isLoading ? 'Guardando...' : 'Registrar Usuario'}}
           </button>
       </div>

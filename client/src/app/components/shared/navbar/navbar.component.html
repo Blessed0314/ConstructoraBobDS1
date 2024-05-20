@@ -25,6 +25,10 @@
           <a class="nav-link" *ngIf="tipoUsuario == 'Gerente'" routerLinkActive="active" [routerLink]="['/dashboard/users']" href="#"> Visualizar Usuarios </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="tipoUsuario == 'Gerente'" routerLinkActive="active" [routerLink]="['/dashboard/obras']" href="#"> Añadir Obra </a>
+        </li>
+
       </ul>
 
       <form class="d-flex" role="search">
@@ -39,7 +43,7 @@
         <button class="btn btn-danger" (click)="cerrarSesion()" type="submit">Cerrar Sesión</button>
 
       </div>
- 
+
     </div>
 
   </div>

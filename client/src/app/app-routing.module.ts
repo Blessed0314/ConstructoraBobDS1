@@ -8,6 +8,7 @@ import { UsersComponent } from './components/gerente/users/users.component';
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
 
 import { GerenteGuard} from './guards/gerente.guard';
+import { ObrasComponent } from './components/gerente/obras/obras.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent, canActivate: [GerenteGuard]},
     {path: 'users', component: UsersComponent, canActivate: [GerenteGuard]},
     {path: 'userDetail/:id', component: UserDetailComponent,  canActivate: [GerenteGuard]},
+    {path: 'obras', component:ObrasComponent, canActivate: [GerenteGuard]},
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: '**' , pathMatch: 'full', redirectTo: 'home'}
   ]},
