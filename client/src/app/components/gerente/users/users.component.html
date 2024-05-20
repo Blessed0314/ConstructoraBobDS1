@@ -28,7 +28,7 @@
             <td>{{usuario.username}}</td>
             <td *ngIf="usuario.usuariodelete">Deshabilitado</td>
             <td *ngIf="usuario.usuariodelete" class="text-center" >
-              <button class="btn btn-success " (click)="deleteUsuario(usuario.usuarioId)">Habilitar</button>
+              <button class="btn btn-success " (click)="cambiarEstadoUsuario(usuario.usuarioId, usuario.usuariodelete)">Habilitar</button>
             </td>
 
             <td *ngIf="!usuario.usuariodelete">Habilitado</td>
