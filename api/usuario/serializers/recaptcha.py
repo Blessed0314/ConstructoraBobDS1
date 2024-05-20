@@ -1,7 +1,6 @@
 import requests
 from decouple import config
 from rest_framework import serializers
-from decouple import config
 
 def validate_recaptcha(recaptcha_response):
     data = {
