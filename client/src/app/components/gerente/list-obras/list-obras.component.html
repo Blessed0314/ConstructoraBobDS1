@@ -9,11 +9,11 @@
             <th class="text-center">Tipo de Obra</th>
             <th class="text-center">Ubicación</th>
             <th class="text-center">Director</th>
-            <th class="text-center">Trabajadores</th>
+            <th class="text-center">Trabajadores Asignados a la Obra</th>
             <!-- <th class="text-center">Estado</th>
-            <th class="text-center">Cambiar Estado</th>
+            <th class="text-center">Cambiar Estado</th> -->
             <th class="text-center">Detalles</th>
-            <th class="text-center">Editar usuario</th> -->
+            <!-- <th class="text-center">Editar usuario</th> -->
           </tr>
         </thead>
 
@@ -34,12 +34,12 @@
             <!-- <td *ngIf="!usuario.usuariodelete">Habilitado</td>
             <td *ngIf="!usuario.usuariodelete" class="text-center">
               <button class="btn btn-danger" (click)="cambiarEstadoUsuario(usuario.usuarioId, usuario.usuariodelete)">Deshabilitar</button>
-            </td>
+            </td> -->
 
             <td>
-              <button class="btn btn-dark " (click)="detalles(usuario.usuarioId)">Detalles</button>
+              <button class="btn btn-dark " (click)="detalles(obra.obraId)">Detalles</button>
             </td>
-
+<!--
             <td class="text-center">
               <button (click)=" editarUsuario(usuario.usuarioId)" class="btn btn-primary ">Editar</button>
             </td>

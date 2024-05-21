@@ -17,4 +17,8 @@ export class ObraService {
   getObras() {
     return this.http.get('http://127.0.0.1:8000/obra/');
   }
+
+  getObra(id: string) {
+    return this.http.get('http://127.0.0.1:8000/obra/' + id);
+  }
 }

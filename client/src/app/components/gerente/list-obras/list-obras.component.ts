@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ObraService } from '../../../services/obra.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { forkJoin, map, switchMap } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-obras',
@@ -11,6 +12,7 @@ import { forkJoin, map, switchMap } from 'rxjs';
 export class ListObrasComponent {
 
   obras: any[] = [];
+  obra : any = {};
   loading: boolean;
 
   constructor(private userService: UsuarioService ,private obraService: ObraService) {
@@ -21,18 +23,7 @@ export class ListObrasComponent {
   getObras() {
     this.obraService.getObras().pipe(
       switchMap((data: any) => {
-        const requests = data.map((obra: any) =>
-          this.getUsuario(obra.directorId).pipe(
-            switchMap((director:any) => {
-              obra.directorNombre = director.nombre + ' ' + director.apellido;
-              return forkJoin(obra.usuarios.map((userId: string) => this.getUsuario(userId)));
-            }),
-            map((usuarios:any) => {
-              obra.usuariosNombres = usuarios.map((usuario:any) => usuario.nombre + ' ' + usuario.apellido);
-              return obra;
-            })
-          )
-        );
+        const requests = data.map((obra: any) => this.getObraWithUsers(obra));
         return forkJoin(requests);
       })
     ).subscribe((obrasConUsuarios: any) => {
@@ -43,5 +34,37 @@ export class ListObrasComponent {
 
   getUsuario(id: string) {
     return this.userService.getUsuario(id);
+  }
+
+  getObraWithUsers(obra: any) {
+    return this.getUsuario(obra.directorId).pipe(
+      switchMap((director: any) => {
+        obra.directorNombre = director.nombre + ' ' + director.apellido;
+        return forkJoin(obra.usuarios.map((userId: string) => this.getUsuario(userId)));
+      }),
+      map((usuarios: any) => {
+        obra.usuariosNombres = usuarios.map((usuario: any) => usuario.nombre + ' ' + usuario.apellido);
+        return obra;
+      })
+    );
+  }
+
+  detalles(id: string) {
+    this.obraService.getObra(id).pipe(
+      switchMap((obra: any) => {
+        this.obra = obra;
+        return this.getObraWithUsers(obra);
+      })
+    ).subscribe(() => {
+      Swal.fire({
+        title: "Nombre Obra: " + this.obra.nombre,
+        html: `<hr>
+              <p><b>Tipo de Obra:</b> ${this.obra.tipoObraId}</p> <hr>
+              <p><b>Ubicación:</b> ${this.obra.ubicacion}</p> <hr>
+              <p><b>Nombre del Director:</b> ${this.obra.directorNombre}</p> <hr>
+              <p><b>Nombre de los Trabajadores:</b> ${this.obra.usuariosNombres.join(', ')}</p> <hr>`,
+        icon: "info"
+      });
+    });
   }
 }
