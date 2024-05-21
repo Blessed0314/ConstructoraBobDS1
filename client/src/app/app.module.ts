@@ -11,6 +11,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {CloudinaryModule} from '@cloudinary/ng';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -26,6 +27,7 @@ import { UsersComponent } from './components/gerente/users/users.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
+
 
 
 
@@ -54,7 +56,8 @@ import { ObrasComponent } from './components/gerente/obras/obras.component';
     RecaptchaModule,
     ReactiveFormsModule,
     NgxDropzoneModule,
-    CloudinaryModule
+    CloudinaryModule,
+    NgSelectModule
 
   ],
   providers: [

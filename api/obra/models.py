@@ -46,3 +46,14 @@ class TipoTarea(models.Model):
     def __str__(self):
         return self.nombre
     
+class Reporte(models.Model):
+    reporteId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    tareaId = models.ForeignKey('Tarea', on_delete=models.CASCADE)
+    descripcion = models.TextField(max_length=200)
+    fotos = models.CharField(max_length=255)
+    audios = models.CharField(max_length=255)
+    fecha_registro = models.DateField(auto_now_add=True)
+    fecha_actualizacion = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.nombre
