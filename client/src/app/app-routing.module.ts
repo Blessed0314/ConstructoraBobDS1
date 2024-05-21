@@ -10,6 +10,7 @@ import { UserDetailComponent } from './components/gerente/user-detail/user-detai
 import { GerenteGuard} from './guards/gerente.guard';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { GestionObrasGuard } from './guards/gestion-obras.guard';
+import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,9 +21,11 @@ const routes: Routes = [
     {path: 'users', component: UsersComponent, canActivate: [GerenteGuard]},
     {path: 'userDetail/:id', component: UserDetailComponent,  canActivate: [GerenteGuard]},
     {path: 'obras', component:ObrasComponent, canActivate: [GestionObrasGuard]},
+    {path: 'list-obras', component:ListObrasComponent, canActivate: [GestionObrasGuard]},
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: '**' , pathMatch: 'full', redirectTo: 'home'}
   ]},
+  
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: '**' , pathMatch: 'full', redirectTo: 'login'}
 ];
