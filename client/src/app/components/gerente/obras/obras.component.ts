@@ -32,7 +32,7 @@ export class ObrasComponent {
 
   datos: any = {
     directorId : "Selecciona el Director de la Obra",
-    tipoObraId: "Selecciona el Tipo de Obra",
+    tipoObra: "Selecciona el Tipo de Obra",
     ubicacion: "Univalle",
     usuarios: []
   }
