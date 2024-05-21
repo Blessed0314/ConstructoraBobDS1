@@ -29,6 +29,10 @@
           <a class="nav-link" *ngIf="tipoUsuario == 'Gerente' || tipoUsuario == 'Director de Obra'" routerLinkActive="active" [routerLink]="['/dashboard/obras']" href="#"> Añadir Obra </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="tipoUsuario == 'Gerente' || tipoUsuario == 'Director de Obra'" routerLinkActive="active" [routerLink]="['/dashboard/list-obras']" href="#"> Visualizar Obras </a>
+        </li>
+
       </ul>
 
       <form class="d-flex" role="search">

@@ -27,6 +27,7 @@ import { UsersComponent } from './components/gerente/users/users.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
+import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
 
 
 
@@ -45,6 +46,7 @@ import { ObrasComponent } from './components/gerente/obras/obras.component';
     LoadingComponent,
     UserDetailComponent,
     ObrasComponent,
+    ListObrasComponent,
   ],
   imports: [
     BrowserModule,
