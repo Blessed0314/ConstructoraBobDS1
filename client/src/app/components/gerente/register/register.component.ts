@@ -27,7 +27,7 @@ export class RegisterComponent {
   }
 
   constructor(  private usuarioService: UsuarioService
-         
+
   ) {
 
     this.usuarioService.getTipoUsuario().subscribe((data: any) => {
@@ -42,9 +42,10 @@ export class RegisterComponent {
 
 
    async registrarUsuario() {
+    console.log(this.datos);
     this.isLoading = true;
     await this.upload();
-  
+
     this.usuarioService.registrarUsuario(this.datos).subscribe({
       next: (data: any) => {
         Swal.fire({
@@ -60,7 +61,7 @@ export class RegisterComponent {
       },
       error: (error) => {
         console.log(error);
-  
+
         let primerError;
         let campo;
         for (const key in error.error) {
@@ -70,16 +71,16 @@ export class RegisterComponent {
             break;
           }
         }
-  
+
         Swal.fire({
           title: primerError,
           text: "Error en " + campo,
           icon: 'error',
           confirmButtonText: 'Ok'
         });
-  
+
       }
-    }); 
+    });
   }
 
    onSelect(event:any) {

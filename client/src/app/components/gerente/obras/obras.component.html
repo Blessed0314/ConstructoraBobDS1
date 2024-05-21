@@ -11,196 +11,59 @@
       <div class="form-group">
           <input  type="text"
                   class="form-control item"
-                  id="nombreObra"
-                  name="nombreObra"
+                  id="nombre"
+                  name="nombre"
                   placeholder="Nombre de la Obra"
                   required
-                  [(ngModel)]="datos.nombreObra"
+                  [(ngModel)]="datos.nombre"
                   pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"
-                  maxlength="15"
-                  [class.is-invalid] = "registroForm.controls['nombreObra']?.errors?.['required'] && registroForm.controls['nombreObra'].dirty"
+                  maxlength="30"
+                  [class.is-invalid] = "registroForm.controls['nombre']?.errors?.['required'] && registroForm.controls['nombre'].dirty"
           >
-          <div *ngIf="registroForm.controls['nombreObra'].invalid && (registroForm.controls['nombreObra'].dirty || registroForm.controls['nombreObra'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['nombreObra']?.errors?.['required']">
+          <div *ngIf="registroForm.controls['nombre'].invalid && (registroForm.controls['nombre'].dirty || registroForm.controls['nombre'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['nombre']?.errors?.['required']">
                 Por favor, ingresa el nombre de la Obra.
             </div>
-            <div *ngIf="registroForm.controls['nombreObra']?.errors?.['pattern']">
+            <div *ngIf="registroForm.controls['nombre']?.errors?.['pattern']">
               Solo se permiten letras en el nombre de la Obra.
             </div>
           </div>
       </div>
 
       <div class="form-group">
-        <select class="form-select form-control item" id="nombreDirector" name="nombreDirector" aria-label="Default select example" required [(ngModel)]="datos.nombreDirector">
+        <select class="form-select form-control item" id="directorId" name="directorId" aria-label="Default select example" required [(ngModel)]="datos.directorId">
           <option disabled>Selecciona el Director de la Obra</option>
-          <option *ngFor="let nombre of nombresDirectores" [value]="nombre">{{nombre}}</option>
+          <option *ngFor="let director of Directores" [value]="director.usuarioId">{{director.nombre + ' ' + director.apellido}}</option>
         </select>
-        <div *ngIf="registroForm.controls['nombreDirector'].invalid && (registroForm.controls['nombreDirector'].dirty || registroForm.controls['nombreDirector'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['nombreDirector']?.errors?.['required']">
+        <div *ngIf="registroForm.controls['directorId'].invalid && (registroForm.controls['directorId'].dirty || registroForm.controls['directorId'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['directorId']?.errors?.['required']">
                 Por favor, selecciona el Director de la Obra.
             </div>
         </div>
       </div>
 
       <div class="form-group">
-        <select class="form-select form-control item" id="tipoDeObra" name="tipoDeObra" aria-label="Default select example" required [(ngModel)]="datos.tipoDeObra">
+        <select class="form-select form-control item" id=" tipoObraId" name=" tipoObraId" aria-label="Default select example" required [(ngModel)]="datos.tipoObraId">
           <option disabled>Selecciona el Tipo de Obra</option>
           <option *ngFor="let obra of tiposDeObra" [value]="obra">{{obra}}</option>
         </select>
-        <div *ngIf="registroForm.controls['tipoDeObra'].invalid && (registroForm.controls['tipoDeObra'].dirty || registroForm.controls['tipoDeObra'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['tipoDeObra']?.errors?.['required']">
+        <div *ngIf="registroForm.controls[' tipoObraId'].invalid && (registroForm.controls[' tipoObraId'].dirty || registroForm.controls[' tipoObraId'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls[' tipoObraId']?.errors?.['required']">
                 Por favor, selecciona el Tipo de Obra.
             </div>
         </div>
       </div>
 
-      <!-- <div class="form-group">
-          <input  type="text"
-                  class="form-control item"
-                  id="apellidos"
-                  name="apellidos"
-                  placeholder="Apellidos"
-                  required
-                  [(ngModel)]="datos.apellido"
-                  pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"
-                  [class.is-invalid] = "registroForm.controls['apellidos']?.errors?.['required'] && registroForm.controls['apellidos'].dirty"
-          >
-          <div *ngIf="registroForm.controls['apellidos'].invalid && (registroForm.controls['apellidos'].dirty || registroForm.controls['apellidos'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['apellidos']?.errors?.['required']">
-                Por favor, ingresa tu apellido.
-            </div>
-            <div *ngIf="registroForm.controls['apellidos']?.errors?.['pattern']">
-              Solo se permiten letras en el apellido.
-          </div>
-          </div>
-      </div> -->
+      <div class="form-group">
+        <ng-select id="obra" [items] = "listaTrabajadores" bindLabel="nombreApellido" bindValue="usuarioId" [(ngModel)]="usuariosSeleccionados" [multiple]="true" placeholder="Selecciona trabajadores..." name="usuarios" #usuarios="ngModel" (change)="actualizarUsuarios()"></ng-select>
+      </div>
 
 
-
-      <!-- <div class="form-group">
-          <input type="text"
-                class="form-control item"
-                id="numIdentificacion"
-                name="numIdentificacion"
-                placeholder="Número de identificación"
-                required
-                [(ngModel)]="datos.noIdentificacion"
-                pattern="[0-9]*"
-                [class.is-invalid] = "registroForm.controls['numIdentificacion']?.errors?.['required'] && registroForm.controls['numIdentificacion'].dirty"
-          >
-          <div *ngIf="registroForm.controls['numIdentificacion'].invalid && (registroForm.controls['numIdentificacion'].dirty || registroForm.controls['numIdentificacion'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['numIdentificacion']?.errors?.['required']">
-                Por favor, ingresa tu número de identificación.
-            </div>
-            <div *ngIf="registroForm.controls['numIdentificacion']?.errors?.['pattern']">
-                El número de identificación solo puede contener números.
-            </div>
-          </div>
-      </div> -->
-
-      <!-- <div class="form-group">
-          <input type="text"
-                class="form-control item"
-                id="username"
-                name="username"
-              placeholder="Usuario"
-                required
-                [(ngModel)]="datos.username"
-                [class.is-invalid] = "registroForm.controls['username']?.errors?.['required'] && registroForm.controls['username'].dirty"
-          >
-          <div *ngIf="registroForm.controls['username'].invalid && (registroForm.controls['username'].dirty || registroForm.controls['username'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['username']?.errors?.['required']">
-                Por favor, ingresa tu nombre de usuario.
-            </div>
-          </div>
-      </div> -->
-
-      <!-- <div class="form-group">
-          <input type="password"
-                class="form-control item"
-                id="password"
-                name="password"
-                placeholder="Contraseña"
-                required
-                [(ngModel)]="datos.password"
-                [class.is-invalid] = "registroForm.controls['password']?.errors?.['required'] && registroForm.controls['password'].dirty"
-          >
-          <div *ngIf="registroForm.controls['password'].invalid && (registroForm.controls['password'].dirty || registroForm.controls['password'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['password']?.errors?.['required']">
-                Por favor, ingresa tu contraseña.
-            </div>
-          </div>
-      </div> -->
-
-      <!-- <div class="form-group">
-        <select class="form-select form-control item" id="genero" name="genero" aria-label="Default select example" required [(ngModel)]="datos.genero">
-          <option disabled >Selecciona tu Género</option>
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
-          <option value="Otro">Otro</option>
-        </select>
-        <div *ngIf="registroForm.controls['genero'].invalid && (registroForm.controls['genero'].dirty || registroForm.controls['genero'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['genero']?.errors?.['required']">
-                Por favor, selecciona tu género.
-            </div>
-        </div>
-      </div> -->
-
-      <!-- <div class="form-group">
-          <input type="text"
-              class="form-control item"
-              id="direccion"
-              name="direccion"
-              placeholder="Dirección"
-              required
-              [(ngModel)]="datos.direccion"
-              [class.is-invalid] = "registroForm.controls['direccion']?.errors?.['required'] && registroForm.controls['direccion'].dirty"
-          >
-          <div *ngIf="registroForm.controls['direccion'].invalid && (registroForm.controls['direccion'].dirty || registroForm.controls['direccion'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['direccion']?.errors?.['required']">
-                Por favor, ingresa tu dirección.
-            </div>
-          </div>
-      </div> -->
-
-      <!-- <div class="form-group">
-        <input type="text"
-              class="form-control item"
-              id="celular"
-              name="celular"
-              placeholder="Número de Celular"
-              required
-              [(ngModel)]="datos.noCelular"
-              pattern="[0-9]*"
-              [class.is-invalid] = "registroForm.controls['celular']?.errors?.['required'] && registroForm.controls['celular'].dirty"
-        >
-        <div *ngIf="registroForm.controls['celular'].invalid && (registroForm.controls['celular'].dirty || registroForm.controls['celular'].touched)" class="alert alert-danger">
-          <div *ngIf="registroForm.controls['celular']?.errors?.['required']">
-              Por favor, ingresa tu número de celular.
-          </div>
-          <div *ngIf="registroForm.controls['celular']?.errors?.['pattern']">
-              El número de celular solo puede contener números.
-          </div>
-        </div>
-      </div> -->
-
-      <!-- <div class="form-group">
-        <select class="form-select form-control item" id="tipoDeIdentidad" name="tipoDeIdentidad" aria-label="Default select example" required [(ngModel)]="datos.tipoIdentID" >
-          <option  disabled> Selecciona el tipo de identificación</option>
-          <option *ngFor="let identidad of tipoIdentidad" [value]="identidad.tipoIdentID" >{{identidad.nombre}}</option>
-        </select>
-        <div *ngIf="registroForm.controls['tipoDeIdentidad'].invalid && (registroForm.controls['tipoDeIdentidad'].dirty || registroForm.controls['tipoDeIdentidad'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['tipoDeIdentidad']?.errors?.['required']">
-                Por favor, selecciona el tipo de identificación.
-            </div>
-        </div>
-      </div> -->
-
-      <!-- <div class="form-group btn-class">
-          <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarUsuario()" >
-            {{isLoading ? 'Guardando...' : 'Registrar Usuario'}}
+      <div class="form-group btn-class">
+          <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarObra()" >
+            {{isLoading ? 'Guardando...' : 'Registrar Obra'}}
           </button>
-      </div> -->
+      </div>
 
   </form>
 
