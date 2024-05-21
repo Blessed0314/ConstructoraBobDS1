@@ -3,6 +3,7 @@ import { ObraService } from '../../../services/obra.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { forkJoin, map, switchMap } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-obras',
@@ -15,7 +16,7 @@ export class ListObrasComponent {
   obra : any = {};
   loading: boolean;
 
-  constructor(private userService: UsuarioService ,private obraService: ObraService) {
+  constructor(private userService: UsuarioService ,private obraService: ObraService, private router: Router) {
     this.getObras();
     this.loading = true;
   }
@@ -66,5 +67,14 @@ export class ListObrasComponent {
         icon: "info"
       });
     });
+  }
+
+
+
+
+  editarUsuario(id: string) {
+
+    this.router.navigate(['/dashboard/obraDetail', id]);
+
   }
 }
