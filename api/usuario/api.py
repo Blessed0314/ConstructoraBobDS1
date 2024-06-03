@@ -3,9 +3,19 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from .serializers.usuario_serializers import UsuarioSerializer, TipoIdentificacionSerializer, TipoUsuarioSerializer
 from .serializers.login_serializer import LoginSerializer
+from django.db.models import Q
 
 class UsuarioViewSet(viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
+    def get_queryset(self):
+        queryset = Usuario.objects.all()
+        tipo_usuario = self.request.query_params.get('tipo', None)
+        if tipo_usuario is not None:
+            tipo_usuario = tipo_usuario.lower()
+            if tipo_usuario == 'obrero':
+                queryset = queryset.filter(Q(tipoUsuarioId__nombre__icontains='ayudante de albañil') | Q(tipoUsuarioId__nombre__icontains='peón'))
+            else:
+                queryset = queryset.filter(tipoUsuarioId__nombre__icontains=tipo_usuario)
+        return queryset
     permission_classes = [
         permissions.AllowAny
     ]
