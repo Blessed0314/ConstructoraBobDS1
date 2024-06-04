@@ -8,7 +8,7 @@ from django.db.models import Q
 class UsuarioViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Usuario.objects.all()
-        tipo_usuario = self.request.query_params.get('tipo', None)
+        tipo_usuario = self.request.query_params.get('type', None)
         if tipo_usuario is not None:
             tipo_usuario = tipo_usuario.lower()
             if tipo_usuario == 'obrero':

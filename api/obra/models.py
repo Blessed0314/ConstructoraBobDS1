@@ -33,7 +33,6 @@ class Tarea(models.Model):
     capatazId = models.ForeignKey('usuario.Usuario', on_delete=models.CASCADE)
     usuarios = models.ManyToManyField('usuario.Usuario', related_name='tareas')
     status = models.CharField(max_length=15, default='nueva')
-    tarea_status = models.CharField(max_length=15, default='nueva')
     tarea_delete = models.BooleanField(default=False)
     fecha_asignacion = models.DateField()
     fecha_estimada = models.DateField()
