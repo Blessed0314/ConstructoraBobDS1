@@ -62,23 +62,6 @@
             </div>
           </div>
       </div>
-
-      <div class="form-group">
-          <input type="password"
-                class="form-control item"
-                id="password"
-                name="password"
-                placeholder="Contraseña"
-                required
-                [(ngModel)]="datos.password"
-          >
-          <div *ngIf="registroForm.controls['password']?.invalid && (registroForm.controls['password'].dirty || registroForm.controls['password'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['password']?.errors?.['required']">
-                Por favor, ingresa tu contraseña.
-            </div>
-          </div>
-      </div>
-
       <div class="form-group">
         <select class="form-select form-control item" id="genero" name="genero" aria-label="Default select example" required [(ngModel)]="datos.genero">
           <option disabled >Selecciona tu Género</option>
@@ -121,32 +104,9 @@
           >
 
       </div>
-
-      <div class="form-group">
-        <select class="form-select form-control item" id="tipoDeIdentidad" name="tipoDeIdentidad" aria-label="Default select example" required [(ngModel)]="datos.tipoIdentID" >
-          <option  disabled> Selecciona el tipo de identificación</option>
-          <option *ngFor="let identidad of tipoIdentidad" [value]="identidad.tipoIdentID" >{{identidad.nombre}}</option>
-        </select>
-        <div *ngIf="registroForm.controls['tipoDeIdentidad']?.invalid && (registroForm.controls['tipoDeIdentidad'].dirty || registroForm.controls['tipoDeIdentidad'].touched)" class="alert alert-danger">
-            <div *ngIf="registroForm.controls['tipoDeIdentidad']?.errors?.['required']">
-                Por favor, selecciona el tipo de identificación.
-            </div>
-        </div>
-      </div>
-
-      <div class="form-group m-5">
-        <h4 class="text-center">Foto</h4>
-        <ngx-dropzone (change)="onSelect($event)">
-          <ngx-dropzone-label>Ingresa o suelta tu imagen</ngx-dropzone-label>
-          <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-          </ngx-dropzone-preview>
-        </ngx-dropzone>
-      </div>
-
       <div class="form-group btn-class">
           <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarUsuario()" >
-            {{isLoading ? 'Guardando...' : 'Registrar Usuario'}}
+            {{isLoading ? 'Actualizando...' : 'Actualizar Usuario'}}
           </button>
       </div>
 

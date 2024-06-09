@@ -32,6 +32,10 @@ export class UsuarioService {
     return this.http.patch('http://127.0.0.1:8000/usuario/' + id + '/', {usuariodelete: estado})
   }
 
+  actualizarUsuario(id: string, datosCliente: any) {
+    return this.http.patch('http://127.0.0.1:8000/usuario/' + id + '/', datosCliente)
+  }
+
   getTipoUsuario() {
     return this.http.get('http://127.0.0.1:8000/tipo_usuario/');
   }
