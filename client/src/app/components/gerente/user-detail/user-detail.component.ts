@@ -1,33 +1,31 @@
-
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrl: './user-detail.component.css'
+  styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent {
   @ViewChild('registroForm') registroForm!: NgForm;
+  @Output() userUpdated = new EventEmitter<any>();
 
-  
   tipoUsuario: any[] = [];
   tipoIdentidad: any[] = [];
   files: File[] = [];
   isLoading = false;
 
-  
- 
   datos: any = {
     tipoUsuario : "Selecciona el tipo de usuario"
-   
   }
 
   constructor(private route: ActivatedRoute,
-              private usuarioService: UsuarioService  
+              private usuarioService: UsuarioService ,
+              private router: Router
   ) {
     this.route.params.subscribe(params => {
       this.usuarioService.getUsuario(params['id']).subscribe(
@@ -52,43 +50,42 @@ export class UserDetailComponent {
 
   async registrarUsuario() {
     this.isLoading = true;
-    await this.upload();
-  
-    this.usuarioService.registrarUsuario(this.datos).subscribe({
+    this.usuarioService.actualizarUsuario(this.datos.usuarioId, this.datos).subscribe({
       next: (data: any) => {
         Swal.fire({
-          title: 'Usuario: '+ data.username + ' ha sido registrado',
-          text: 'Se ha registrado el usuario correctamente',
+          title: 'Usuario: '+ data.username + ' ha sido actualizado',
+          text: 'Se ha actualizado el usuario correctamente',
           icon: 'success',
           showConfirmButton:false,
           timer: 2000
         });
+        let usuarioId = this.datos.usuarioId; // Almacena el usuarioId aquí
         this.datos = {};
         this.registroForm.resetForm();
         this.isLoading = false;
-      },
-      error: (error) => {
-        console.log(error);
-  
-        let primerError;
-        let campo;
-        for (const key in error.error) {
-          if (error.error.hasOwnProperty(key)) {
-            primerError = error.error[key][0];
-            campo = key
-            break;
-          }
+        this.usuarioService.getUsuario(usuarioId).subscribe( // Usa el usuarioId aquí
+        data => {
+          this.datos = data;
+          console.log(this.datos)
+        },
+        error => {
+          console.log(error);
         }
-  
+      );
+      
+      },
+      error: (error: any) => {
+        console.error(error);
         Swal.fire({
-          title: primerError,
-          text: "Error en " + campo,
+          title: 'Error',
+          text: 'Ha ocurrido un error al actualizar el usuario',
           icon: 'error',
-          confirmButtonText: 'Ok'
+          showConfirmButton:false,
+          timer: 2000
         });
-  
+        this.isLoading = false;
       }
-    }); 
+    });
   }
 
   onSelect(event:any) {
@@ -124,5 +121,4 @@ export class UserDetailComponent {
   validarNombre() {
     console.log(this.datos);
   }
-
 }
