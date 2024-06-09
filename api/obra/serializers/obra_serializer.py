@@ -6,7 +6,15 @@ from usuario.models import Usuario
 class ObraSerializer(serializers.ModelSerializer):
     tipoObraId = serializers.CharField(source='tipoObraId.nombre', read_only=True)
     tipoObra = serializers.CharField(write_only=True)
-    usuarios = serializers.PrimaryKeyRelatedField(many=True, queryset=Usuario.objects.all())
+
+    directorId = serializers.PrimaryKeyRelatedField(
+        queryset=Usuario.objects.filter(tipoUsuarioId__nombre='Director de Obra'),
+        many=False
+    )
+    usuarios = serializers.PrimaryKeyRelatedField(
+        queryset=Usuario.objects.filter(tipoUsuarioId__nombre__in=['Peón', 'Ayudante de albañil', 'Capataz de Obra']),
+        many=True
+    )
 
     class Meta:
         model = Obra
