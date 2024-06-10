@@ -6,12 +6,13 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { RegisterComponent } from './components/gerente/register/register.component';
 import { UsersComponent } from './components/gerente/users/users.component';
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
+import { TaskComponent } from './components/director de obra/task/task.component';
+import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
 
 import { GerenteGuard} from './guards/gerente.guard';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { GestionObrasGuard } from './guards/gestion-obras.guard';
-import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
-import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detail.component';
+import { ManagementTask } from './guards/management-task.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
     {path: 'userDetail/:id', component: UserDetailComponent,  canActivate: [GerenteGuard]},
     {path: 'obras', component:ObrasComponent, canActivate: [GestionObrasGuard]},
     {path: 'list-obras', component:ListObrasComponent, canActivate: [GestionObrasGuard]},
-    {path: 'obraDetail/:id', component: ObraDetailComponent,  canActivate: [GestionObrasGuard]},
+    {path: 'task/:id', component:TaskComponent, canActivate: [ManagementTask]},
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: '**' , pathMatch: 'full', redirectTo: 'home'}
   ]},
