@@ -1,0 +1,120 @@
+body{
+    background-color: #ffffff;
+  }
+  
+  .registration-form{
+  padding: 50px 0;
+  }
+  
+  .registration-form form{
+    background-color: #57a0ffbb;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px 70px;
+    border-radius: 30px;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.583);
+  }
+  
+  .registration-form .form-icon{
+    text-align: center;
+    background-image: url('/assets/img/logo.png');
+    background-color: #ffffff86;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 115px;
+    border-radius: 50%;
+    font-size: 40px;
+    color: white;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 25px;
+    line-height: 100px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.583);
+  }
+  
+  .form-title{
+    text-align: center;
+    font-size:25px;
+    margin-bottom: 30px;
+  }
+  
+  .registration-form .item{
+    border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.583);
+  }
+  
+  .registration-form .btn-class{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .create-account{
+  
+    color: #57a0ff;
+    background-color: #ffffff;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.583);
+  }
+  
+  .btn-class :hover{
+    color: #ffffff;
+    background-color: #0464b9;
+  }
+  
+  .ng-select {
+    width: 300px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.583);
+    background-color: #ffffff;
+     /* Ancho del ng-select */
+  }
+  
+  /* Estilos para la lista desplegable */
+  .ng-dropdown-panel {
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Borde de la lista desplegable */
+  }
+  
+  /* Estilos para los elementos de la lista desplegable */
+  .ng-option {
+    padding: 8px 12px;
+    background-color: #f0f0f0; /* Padding de los elementos de la lista desplegable */
+    cursor: pointer; /* Cursor al pasar sobre los elementos */
+  }
+  
+  /* Estilos para los elementos seleccionados */
+  .ng-value {
+    background-color: #f0f0f0; /* Color de fondo de los elementos seleccionados */
+    border: 1px solid #ccc; /* Borde de los elementos seleccionados */
+    border-radius: 4px; /* Borde redondeado */
+    padding: 4px 8px; /* Padding de los elementos seleccionados */
+    margin-right: 4px; /* Margen entre elementos seleccionados */
+  }
+  
+  /* Estilos para el icono de eliminar en los elementos seleccionados */
+  .ng-clear-wrapper {
+    font-size: 12px; /* Tamaño del icono de eliminar */
+    margin-left: 4px; /* Margen izquierdo del icono de eliminar */
+    cursor: pointer; /* Cursor al pasar sobre el icono de eliminar */
+  }
+  
+  @media (max-width: 576px) {
+    .registration-form form{
+        padding: 50px 20px;
+    }
+  
+    .registration-form .form-icon{
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+        line-height: 70px;
+    }
+  }
+  
