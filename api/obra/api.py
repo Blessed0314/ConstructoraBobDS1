@@ -41,6 +41,10 @@ class TipoObraViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = TipoObraSerializer
 
+    @property
+    def allowed_methods(self):
+        return ['GET']
+
 class TareaViewSet(viewsets.ModelViewSet):
     permission_classes = [
         permissions.AllowAny
@@ -81,6 +85,9 @@ class TipoTareaViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = TipoTareaSerializer
+    @property
+    def allowed_methods(self):
+        return ['GET']
 
 class ReporteViewSet(viewsets.ModelViewSet):
     queryset = Reporte.objects.all()
