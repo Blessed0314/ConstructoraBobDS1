@@ -1,16 +1,16 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import Swal from 'sweetalert2';
 import { ObraService } from '../../../services/obra.service';
 
 @Component({
-  selector: 'app-obras',
-  templateUrl: './obras.component.html',
-  styleUrl: './obras.component.css'
+  selector: 'app-obra-detail',
+  templateUrl: './obra-detail.component.html',
+  styleUrl: './obra-detail.component.css'
 })
-export class ObrasComponent {
-
+export class ObraDetailComponent {
   @ViewChild('registroForm') registroForm!: NgForm;
 
   isLoading = false;
@@ -31,13 +31,24 @@ export class ObrasComponent {
   ]
 
   datos: any = {
-    directorId : "Selecciona el Director de la Obra",
-    tipoObra: "Selecciona el Tipo de Obra",
     usuarios: []
   }
 
 
-  constructor(private usuarioService: UsuarioService, private obraService: ObraService) {
+  constructor(private usuarioService: UsuarioService, private obraService: ObraService, private route: ActivatedRoute,) {
+
+    this.route.params.subscribe(params => {
+      this.obraService.getObra(params['id']).subscribe(
+        data => {
+          this.datos = data;
+          console.log(this.datos)
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    });
+
     this.getDirectores();
     this.getTrabajadores();
   }
@@ -63,11 +74,11 @@ export class ObrasComponent {
     console.log(this.datos);
     this.isLoading = true;
 
-    this.obraService.registrarObra(this.datos).subscribe({
+    this.obraService.actualizarObra(this.datos.obraId, this.datos).subscribe({
       next: (data: any) => {
         Swal.fire({
           title: 'Obra: '+ data.nombre + ' ha sido registrada',
-          text: 'Se ha registrado la obra correctamente',
+          text: 'Se ha Actualizado la obra correctamente',
           icon: 'success',
           showConfirmButton:false,
           timer: 2000

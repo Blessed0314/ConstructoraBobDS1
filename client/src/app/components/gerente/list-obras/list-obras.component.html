@@ -10,11 +10,10 @@
             <th class="text-center">Ubicación</th>
             <th class="text-center">Director</th>
             <th class="text-center">Trabajadores Asignados a la Obra</th>
-            <!-- <th class="text-center">Estado</th>
-            <th class="text-center">Cambiar Estado</th> -->
+            <th class="text-center">Estado</th>
+            <th class="text-center">Cambiar Estado</th>
             <th class="text-center">Detalles</th>
-            <th class="text-center">Agregar tarea</th>
-            <!-- <th class="text-center">Editar usuario</th> -->
+            <th class="text-center">Editar Obra</th>
           </tr>
         </thead>
 
@@ -27,15 +26,14 @@
             <td>{{obra.ubicacion}}</td>
             <td>{{obra.directorNombre}}</td>
             <td>{{obra.usuariosNombres.join(', ')}}</td>
-            <!-- <td *ngIf="usuario.usuariodelete">Deshabilitado</td>
-            <td *ngIf="usuario.usuariodelete" class="text-center" >
-              <button class="btn btn-success " (click)="cambiarEstadoUsuario(usuario.usuarioId, usuario.usuariodelete)">Habilitar</button>
-            </td> -->
-
-            <!-- <td *ngIf="!usuario.usuariodelete">Habilitado</td>
-            <td *ngIf="!usuario.usuariodelete" class="text-center">
-              <button class="btn btn-danger" (click)="cambiarEstadoUsuario(usuario.usuarioId, usuario.usuariodelete)">Deshabilitar</button>
-            </td> -->
+            <td *ngIf="obra.obra_delete">Deshabilitado</td>
+            <td *ngIf="obra.obra_delete" class="text-center" >
+              <button class="btn btn-success " (click)="cambiarEstadoObra(obra.obraId, obra.obra_delete)">Habilitar</button>
+            </td>
+            <td *ngIf="!obra.obra_delete" >Habilitado</td>
+            <td *ngIf="!obra.obra_delete" class="text-center">
+              <button class="btn btn-danger" (click)="cambiarEstadoObra(obra.obraId, obra.obra_delete)" >Deshabilitar</button>
+            </td>
 
             <td>
               <button class="btn btn-dark " (click)="detalles(obra.obraId)">Detalles</button>
@@ -46,9 +44,9 @@
             </td>
 <!--
             <td class="text-center">
-              <button (click)=" editarUsuario(usuario.usuarioId)" class="btn btn-primary ">Editar</button>
+              <button (click)=" editarObra(obra.obraId)" class="btn btn-primary ">Editar</button>
             </td>
-          </tr> -->
+          </tr>
 
         </tbody>
 

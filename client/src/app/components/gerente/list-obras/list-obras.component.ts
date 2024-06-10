@@ -4,6 +4,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { forkJoin, map, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,10 +18,14 @@ export class ListObrasComponent {
   obra : any = {};
   loading: boolean;
 
+<<<<<<< HEAD
   constructor(private userService: UsuarioService ,
               private obraService: ObraService,
               private router: Router) 
   {
+=======
+  constructor(private userService: UsuarioService ,private obraService: ObraService, private router: Router) {
+>>>>>>> 11a5a2beb9ce14c967b8189d17816c4c974d5e0b
     this.getObras();
     this.loading = true;
   }
@@ -54,6 +59,19 @@ export class ListObrasComponent {
     );
   }
 
+  cambiarEstadoObra(id: string, estado: boolean) {
+
+    this.obraService.cambiarEstadoObra(id, !estado).subscribe((data: any) => {
+      this.getObras()
+      Swal.fire({
+        icon: 'success',
+        title: 'Se ha cambiado el estado de la Obra',
+        timer: 8000,
+        showConfirmButton: false
+      })
+    })
+  }
+
   detalles(id: string) {
     this.obraService.getObra(id).pipe(
       switchMap((obra: any) => {
@@ -73,7 +91,17 @@ export class ListObrasComponent {
     });
   }
 
+<<<<<<< HEAD
   crearTarea(id: String) {
     this.router.navigate(['/dashboard/task', id]);
+=======
+
+
+
+  editarObra(id: string) {
+
+    this.router.navigate(['/dashboard/obraDetail', id]);
+
+>>>>>>> 11a5a2beb9ce14c967b8189d17816c4c974d5e0b
   }
 }

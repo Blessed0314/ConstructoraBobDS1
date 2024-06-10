@@ -28,7 +28,11 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
+<<<<<<< HEAD
 import { TaskComponent } from './components/director de obra/task/task.component';
+=======
+import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detail.component';
+>>>>>>> 11a5a2beb9ce14c967b8189d17816c4c974d5e0b
 
 
 
@@ -48,7 +52,11 @@ import { TaskComponent } from './components/director de obra/task/task.component
     UserDetailComponent,
     ObrasComponent,
     ListObrasComponent,
+<<<<<<< HEAD
     TaskComponent,
+=======
+    ObraDetailComponent,
+>>>>>>> 11a5a2beb9ce14c967b8189d17816c4c974d5e0b
   ],
   imports: [
     BrowserModule,
