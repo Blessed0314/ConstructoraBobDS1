@@ -28,12 +28,20 @@ class TipoIdentificacionViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = TipoIdentificacionSerializer
 
+    @property
+    def allowed_methods(self):
+        return ['GET']
+
 class TipoUsuarioViewSet(viewsets.ModelViewSet):
     queryset = TipoUsuario.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
     serializer_class = TipoUsuarioSerializer
+
+    @property
+    def allowed_methods(self):
+        return ['GET']
 
 class LoginViewSet(viewsets.ViewSet):
     permission_classes = [
