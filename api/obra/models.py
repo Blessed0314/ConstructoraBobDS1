@@ -40,7 +40,7 @@ class Tarea(models.Model):
     fecha_actualizacion = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.nombre
+        return self.descripcion
     
 class TipoTarea(models.Model):
     tipoTareaId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -59,4 +59,4 @@ class Reporte(models.Model):
     fecha_actualizacion = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.nombre
+        return self.descripcion
