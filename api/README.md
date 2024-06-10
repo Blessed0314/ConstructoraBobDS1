@@ -15,7 +15,7 @@ python -m virtualenv venv
 # Nota: Verificarás que estás en el entorno virtual cuando veas (venv) en la consola.
 
 # Paso 5: Instalar los paquetes necesarios
-pip install django djangorestframework python-decouple psycopg2-binary
+pip install django djangorestframework python-decouple psycopg2-binary request django-cors-headers
 
 # Paso 6: Descargar y configurar el archivo de variables de entorno
 # Descarga el archivo de variables de entorno .env y pégalo en la carpeta 'api' del proyecto.
