@@ -21,4 +21,8 @@ export class ObraService {
   getObra(id: string) {
     return this.http.get('http://127.0.0.1:8000/obra/' + id);
   }
+
+  cambiarEstadoObra(id: string, estado: boolean) {
+    return this.http.patch('http://127.0.0.1:8000/obra/' + id + '/', {obra_delete: estado})
+  }
 }
