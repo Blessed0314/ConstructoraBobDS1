@@ -14,6 +14,7 @@
             <th class="text-center">Cambiar Estado</th>
             <th class="text-center">Detalles</th>
             <th class="text-center">Editar Obra</th>
+            <th class="text-center">Crear Tarea</th>
           </tr>
         </thead>
 
@@ -39,13 +40,14 @@
               <button class="btn btn-dark " (click)="detalles(obra.obraId)">Detalles</button>
             </td>
 
-            <td>
-              <button class="btn btn-dark " (click)="crearTarea(obra.obraId)">Agregar tarea</button>
-            </td>
-<!--
             <td class="text-center">
               <button (click)=" editarObra(obra.obraId)" class="btn btn-primary ">Editar</button>
             </td>
+
+            <td>
+              <button class="btn btn-dark " (click)="crearTarea(obra.obraId)">Agregar tarea</button>
+            </td>
+
           </tr>
 
         </tbody>
