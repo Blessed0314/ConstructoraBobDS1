@@ -13,6 +13,7 @@ import { GerenteGuard} from './guards/gerente.guard';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { GestionObrasGuard } from './guards/gestion-obras.guard';
 import { ManagementTask } from './guards/management-task.guard';
+import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detail.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path: 'users', component: UsersComponent, canActivate: [GerenteGuard]},
     {path: 'userDetail/:id', component: UserDetailComponent,  canActivate: [GerenteGuard]},
     {path: 'obras', component:ObrasComponent, canActivate: [GestionObrasGuard]},
+    {path: 'obraDetail/:id', component:ObraDetailComponent, canActivate: [GestionObrasGuard]},
     {path: 'list-obras', component:ListObrasComponent, canActivate: [GestionObrasGuard]},
     {path: 'task/:id', component:TaskComponent, canActivate: [ManagementTask]},
     {path: '', pathMatch: 'full', redirectTo: 'home'},

@@ -4,7 +4,7 @@ import { CanActivateFn } from '@angular/router';
 import { managementTaskGuard } from './management-task.guard';
 
 describe('managementTaskGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
+  const executeGuard: CanActivateFn = (...guardParameters) =>
       TestBed.runInInjectionContext(() => managementTaskGuard(...guardParameters));
 
   beforeEach(() => {

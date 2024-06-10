@@ -14,6 +14,7 @@
             <th class="text-center">Cambiar Estado</th>
             <th class="text-center">Detalles</th>
             <th class="text-center">Editar Obra</th>
+            <th class="text-center">Crear Tarea</th>
           </tr>
         </thead>
 
@@ -36,9 +37,25 @@
             </td>
 
             <td>
-              <button class="btn btn-primary " (click)="detalles(obra.obraId)">Detalles</button>
+              <button class="btn btn-dark " (click)="detalles(obra.obraId)">Detalles</button>
+            </td>
+
+            <td>
+              <button class="btn btn-primary " (click)="editarObra(obra.obraId)">Editar</button>
             </td>
 
             <td>
               <button class="btn btn-dark " (click)="crearTarea(obra.obraId)">Agregar tarea</button>
             </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <app-loading *ngIf="loading"></app-loading>
+    </div>
+  </div>
+</div>
+
