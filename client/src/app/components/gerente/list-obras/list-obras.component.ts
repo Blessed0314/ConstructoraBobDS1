@@ -29,7 +29,6 @@ export class ListObrasComponent {
       })
     ).subscribe((obrasConUsuarios: any) => {
       this.obras = obrasConUsuarios;
-      console.log(this.obras);
       this.loading = false;
     });
   }
@@ -54,13 +53,11 @@ export class ListObrasComponent {
   cambiarEstadoObra(id: string, estado: boolean) {
 
     this.obraService.cambiarEstadoObra(id, !estado).subscribe((data: any) => {
-      console.log(data)
-
       this.getObras()
       Swal.fire({
         icon: 'success',
         title: 'Se ha cambiado el estado de la Obra',
-        timer: 2000,
+        timer: 8000,
         showConfirmButton: false
       })
     })
@@ -88,7 +85,7 @@ export class ListObrasComponent {
 
 
 
-  editarUsuario(id: string) {
+  editarObra(id: string) {
 
     this.router.navigate(['/dashboard/obraDetail', id]);
 
