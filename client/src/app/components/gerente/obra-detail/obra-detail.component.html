@@ -31,6 +31,28 @@
       </div>
 
       <div class="form-group">
+        <input  type="text"
+                class="form-control item"
+                id="ubicacion"
+                name="ubicacion"
+                placeholder="Ubicación de la Obra"
+                required
+                [(ngModel)]="datos.ubicacion"
+                pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"
+                maxlength="30"
+                [class.is-invalid] = "registroForm.controls['ubicacion']?.errors?.['required'] && registroForm.controls['ubicacion'].dirty"
+        >
+        <div *ngIf="registroForm.controls['ubicacion'].invalid && (registroForm.controls['ubicacion'].dirty || registroForm.controls['ubicacion'].touched)" class="alert alert-danger">
+          <div *ngIf="registroForm.controls['ubicacion']?.errors?.['required']">
+              Por favor, ingresa la ubicación de la Obra.
+          </div>
+          <div *ngIf="registroForm.controls['ubicacion']?.errors?.['pattern']">
+            Solo se permiten letras en la ubicación de la Obra.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
         <select class="form-select form-control item" id="directorId" name="directorId" aria-label="Default select example" required [(ngModel)]="datos.directorId">
           <option disabled>Selecciona el Director de la Obra</option>
           <option *ngFor="let director of Directores" [value]="director.usuarioId">{{director.nombre + ' ' + director.apellido}}</option>
