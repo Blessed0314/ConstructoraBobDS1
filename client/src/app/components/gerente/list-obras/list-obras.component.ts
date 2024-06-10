@@ -29,6 +29,7 @@ export class ListObrasComponent {
       })
     ).subscribe((obrasConUsuarios: any) => {
       this.obras = obrasConUsuarios;
+      console.log(this.obras);
       this.loading = false;
     });
   }
@@ -48,6 +49,21 @@ export class ListObrasComponent {
         return obra;
       })
     );
+  }
+
+  cambiarEstadoObra(id: string, estado: boolean) {
+
+    this.obraService.cambiarEstadoObra(id, !estado).subscribe((data: any) => {
+      console.log(data)
+
+      this.getObras()
+      Swal.fire({
+        icon: 'success',
+        title: 'Se ha cambiado el estado de la Obra',
+        timer: 2000,
+        showConfirmButton: false
+      })
+    })
   }
 
   detalles(id: string) {
