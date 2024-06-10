@@ -10,8 +10,12 @@ export class ObraService {
   constructor(private http: HttpClient) { }
 
 
-  registrarObra(datosCliente: any ) : Observable<any>  {
-    return this.http.post('http://127.0.0.1:8000/obra/', datosCliente)
+  registrarObra(datosObra: any ) : Observable<any>  {
+    return this.http.post('http://127.0.0.1:8000/obra/', datosObra)
+  }
+
+  actualizarObra(id: string, datosObra: any) {
+    return this.http.patch('http://127.0.0.1:8000/obra/' + id + '/', datosObra)
   }
 
   getObras() {

@@ -1,1 +1,70 @@
-<p>obra-detail works!</p>
+<div class="registration-form animated fadeIn">
+  <form #registroForm="ngForm">
+      <div class="form-icon">
+          <span><i class="icon icon-user"></i></span>
+      </div>
+      <div>
+          <h1 class="form-title">Constructora Bob</h1>
+          <h3 class="form-title">Actualizar Obras</h3>
+      </div>
+
+      <div class="form-group">
+          <input  type="text"
+                  class="form-control item"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Nombre de la Obra"
+                  required
+                  [(ngModel)]="datos.nombre"
+                  pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+"
+                  maxlength="30"
+                  [class.is-invalid] = "registroForm.controls['nombre']?.errors?.['required'] && registroForm.controls['nombre'].dirty"
+          >
+          <div *ngIf="registroForm.controls['nombre'].invalid && (registroForm.controls['nombre'].dirty || registroForm.controls['nombre'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['nombre']?.errors?.['required']">
+                Por favor, ingresa el nombre de la Obra.
+            </div>
+            <div *ngIf="registroForm.controls['nombre']?.errors?.['pattern']">
+              Solo se permiten letras en el nombre de la Obra.
+            </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <select class="form-select form-control item" id="directorId" name="directorId" aria-label="Default select example" required [(ngModel)]="datos.directorId">
+          <option disabled>Selecciona el Director de la Obra</option>
+          <option *ngFor="let director of Directores" [value]="director.usuarioId">{{director.nombre + ' ' + director.apellido}}</option>
+        </select>
+        <div *ngIf="registroForm.controls['directorId'].invalid && (registroForm.controls['directorId'].dirty || registroForm.controls['directorId'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls['directorId']?.errors?.['required']">
+                Por favor, selecciona el Director de la Obra.
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <select class="form-select form-control item" id=" tipoObra" name=" tipoObra" aria-label="Default select example" required [(ngModel)]="datos.tipoObra">
+          <option disabled>Selecciona el Tipo de Obra</option>
+          <option *ngFor="let obra of tiposDeObra" [value]="obra">{{obra}}</option>
+        </select>
+        <div *ngIf="registroForm.controls[' tipoObra'].invalid && (registroForm.controls[' tipoObra'].dirty || registroForm.controls[' tipoObra'].touched)" class="alert alert-danger">
+            <div *ngIf="registroForm.controls[' tipoObra']?.errors?.['required']">
+                Por favor, selecciona el Tipo de Obra.
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <ng-select id="obra" [items] = "listaTrabajadores" bindLabel="nombreApellido" bindValue="usuarioId" [(ngModel)]="datos.usuarios" [multiple]="true" placeholder="Selecciona trabajadores..." name="usuarios" #usuarios="ngModel" (change)="actualizarUsuarios()"></ng-select>
+      </div>
+
+
+      <div class="form-group btn-class">
+          <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarObra()" >
+            {{isLoading ? 'Guardando...' : 'Registrar Obra'}}
+          </button>
+      </div>
+
+  </form>
+
+</div>

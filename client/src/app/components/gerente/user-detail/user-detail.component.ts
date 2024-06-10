@@ -72,7 +72,7 @@ export class UserDetailComponent {
           console.log(error);
         }
       );
-      
+
       },
       error: (error: any) => {
         console.error(error);
