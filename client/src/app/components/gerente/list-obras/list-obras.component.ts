@@ -84,15 +84,14 @@ export class ListObrasComponent {
     });
   }
 
-  crearTarea(id: String) {
+  crearTarea(id: string) {
     this.router.navigate(['/dashboard/task', id]);
-
   }
 
+  
+
   editarObra(id: string) {
-
     this.router.navigate(['/dashboard/obraDetail', id]);
-
   }
 
 }

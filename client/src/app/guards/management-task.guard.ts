@@ -18,7 +18,7 @@ export class ManagementTask implements CanActivate {
     } else {
       this.router.navigate(['/dashboard']);
       return false;
-  
+
     }
   }
 }
