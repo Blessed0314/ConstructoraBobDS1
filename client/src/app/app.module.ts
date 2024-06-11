@@ -30,6 +30,7 @@ import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
 import { TaskComponent } from './components/director-de-obra/task/task.component';
 import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detail.component';
+import { ListTaskComponent } from './components/director-de-obra/list-task/list-task.component';
 
 
 
@@ -51,6 +52,7 @@ import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detai
     ListObrasComponent,
     TaskComponent,
     ObraDetailComponent,
+    ListTaskComponent,
   ],
   imports: [
     BrowserModule,

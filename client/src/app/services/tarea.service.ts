@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,6 +15,11 @@ export class TareaService {
 
   traerTareasId() : Observable<any> {
     return this.http.get('http://127.0.0.1:8000/tipo_tarea/')
+  }
+
+  traerTareas(obraId: string): Observable<any> {
+    let params = new HttpParams().set('obraId', obraId);
+    return this.http.get('http://127.0.0.1:8000/tarea', { params: params });
   }
 
 }

@@ -94,6 +94,10 @@ export class ListObrasComponent {
     this.router.navigate(['/dashboard/obraDetail', id]);
   }
 
+  verTareas(id: string) {
+    this.router.navigate(['/dashboard/list-task', id]);
+  }
+
 }
 
 
