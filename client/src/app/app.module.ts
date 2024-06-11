@@ -28,8 +28,9 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
-import { TaskComponent } from './components/director de obra/task/task.component';
+import { TaskComponent } from './components/director-de-obra/task/task.component';
 import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detail.component';
+import { AvancesComponent } from './components/director-de-obra/avances/avances.component';
 
 
 
@@ -51,6 +52,7 @@ import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detai
     ListObrasComponent,
     TaskComponent,
     ObraDetailComponent,
+    AvancesComponent,
   ],
   imports: [
     BrowserModule,

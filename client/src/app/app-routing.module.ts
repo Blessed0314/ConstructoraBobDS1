@@ -6,7 +6,7 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { RegisterComponent } from './components/gerente/register/register.component';
 import { UsersComponent } from './components/gerente/users/users.component';
 import { UserDetailComponent } from './components/gerente/user-detail/user-detail.component';
-import { TaskComponent } from './components/director de obra/task/task.component';
+import { TaskComponent } from './components/director-de-obra/task/task.component';
 import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
 
 import { GerenteGuard} from './guards/gerente.guard';
