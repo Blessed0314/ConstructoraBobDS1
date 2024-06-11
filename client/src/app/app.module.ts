@@ -36,6 +36,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ListTaskComponent } from './components/director-de-obra/list-task/list-task.component';
 import { RecordingComponent } from './components/shared/recording/recording.component';
 import { TaskDetailComponent } from './components/director-de-obra/task-detail/task-detail.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 
@@ -75,7 +76,8 @@ import { TaskDetailComponent } from './components/director-de-obra/task-detail/t
     CloudinaryModule,
     NgSelectModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    NgApexchartsModule
 
   ],
   providers: [
