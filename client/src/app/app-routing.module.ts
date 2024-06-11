@@ -15,6 +15,7 @@ import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { GestionObrasGuard } from './guards/gestion-obras.guard';
 import { ManagementTask } from './guards/management-task.guard';
 import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detail.component';
+import { AvancesComponent } from './components/director-de-obra/avances/avances.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
     {path: 'list-obras', component:ListObrasComponent, canActivate: [GestionObrasGuard]},
     {path: 'task/:id', component:TaskComponent, canActivate: [ManagementTask]},
     {path: 'list-task/:id', component:ListTaskComponent, canActivate: [ManagementTask]},
+    {path: 'avances/:id', component:AvancesComponent, canActivate: [GestionObrasGuard]},
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: '**' , pathMatch: 'full', redirectTo: 'home'}
   ]},

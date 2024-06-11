@@ -3,12 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/enviroments';
 
 //Modulos
-import {ReactiveFormsModule} from '@angular/forms';
-import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
-import { RecaptchaModule } from 'ng-recaptcha';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RecaptchaModule } from 'ng-recaptcha';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {CloudinaryModule} from '@cloudinary/ng';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -30,6 +28,11 @@ import { ObrasComponent } from './components/gerente/obras/obras.component';
 import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
 import { TaskComponent } from './components/director-de-obra/task/task.component';
 import { ObraDetailComponent } from './components/gerente/obra-detail/obra-detail.component';
+import { AvancesComponent } from './components/director-de-obra/avances/avances.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ListTaskComponent } from './components/director-de-obra/list-task/list-task.component';
 
 
@@ -38,6 +41,7 @@ import { ListTaskComponent } from './components/director-de-obra/list-task/list-
 
 @NgModule({
   declarations: [
+    AvancesComponent,
     AppComponent,
     LoginComponent,
     HomeComponent,
@@ -65,7 +69,9 @@ import { ListTaskComponent } from './components/director-de-obra/list-task/list-
     ReactiveFormsModule,
     NgxDropzoneModule,
     CloudinaryModule,
-    NgSelectModule
+    NgSelectModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
 
   ],
   providers: [
@@ -78,6 +84,8 @@ import { ListTaskComponent } from './components/director-de-obra/list-task/list-
     FormsModule,
     NgxDropzoneModule,
     CloudinaryModule,
+    provideFirebaseApp(() => initializeApp({"projectId":"proyectods-e74f3","appId":"1:907721758665:web:042afe04849e4ca3543a18","storageBucket":"proyectods-e74f3.appspot.com","apiKey":"AIzaSyBiPCONm9EOAONjMw5ZOv_3x7EKGpBdavA","authDomain":"proyectods-e74f3.firebaseapp.com","messagingSenderId":"907721758665","measurementId":"G-6YXFHW1VKZ"})),
+    provideStorage(() => getStorage()),
   ],
   bootstrap: [AppComponent]
 })
