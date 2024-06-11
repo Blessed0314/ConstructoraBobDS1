@@ -77,6 +77,9 @@ export class ListTaskComponent {
     }));
   }
 
+  detalles(id: string) {
+    this.router.navigate(['/dashboard/taskDetail', id]);
+  }
   crearAvance(id: string) {
     this.router.navigate(['/dashboard/avances', id]);
   }

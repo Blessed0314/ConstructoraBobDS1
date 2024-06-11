@@ -24,7 +24,9 @@
               <td>{{tarea.fecha_asignacion}}</td>
               <td>{{tarea.fecha_estimada}}</td>
               <td>{{tarea.status}}</td>
-              <td></td>
+              <td>
+                <button class="btn btn-info " (click)="detalles(tarea.tareaId)">Detalles</button>
+              </td>
               <td><button class="btn btn-dark " (click)="crearAvance(tarea.tareaId)">Crear Avances</button></td>
           </tbody>
 
