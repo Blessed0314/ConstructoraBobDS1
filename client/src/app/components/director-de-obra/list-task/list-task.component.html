@@ -1,0 +1,33 @@
+<div class="row m-5 animated fadeIn table-responsive">
+    <div class="row">
+      <div class="col">
+        <table class="table table-primary table-hover table-bordered table-striped">
+  
+          <thead>
+            <tr>
+              <th class="text-center" >Tipo de Tarea</th>
+              <th class="text-center">Capataz responsable</th>
+              <th class="text-center">Fecha de Asignacion</th>
+              <th class="text-center">Fecha Estimada</th>
+              <th class="text-center">Estado</th>
+            </tr>
+          </thead>
+  
+  
+  
+          <tbody *ngFor ="let tarea of tareas">
+            <tr>
+              <td>{{tarea.nombreDeTarea}}</td>
+              <td>{{tarea.capatazNombre}}</td>
+              <td>{{tarea.fecha_asignacion}}</td>
+              <td>{{tarea.fecha_estimada}}</td>
+              <td>{{tarea.status}}</td>
+              <td></td>
+          </tbody>
+  
+        </table>
+  
+        <app-loading *ngIf="loading"></app-loading>
+      </div>
+    </div>
+  </div>

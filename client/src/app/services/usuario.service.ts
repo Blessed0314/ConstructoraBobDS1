@@ -60,5 +60,8 @@ export class UsuarioService {
     return this.url;
   }
 
+  getUsuarioById(id:String): Observable<any> {
+    return this.http.get('http://127.0.0.1:8000/usuario/' + id);
+  }
 
 }
