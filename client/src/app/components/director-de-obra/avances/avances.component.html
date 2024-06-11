@@ -46,12 +46,13 @@
         <audio *ngIf="recordedAudioUrl" controls>
           <source [src]="recordedAudioUrl" type="audio/mpeg">
         </audio>
+        <app-recording class="m-2" *ngIf="recording"></app-recording>
 
       </div>
 
       <div class="form-group btn-class">
           <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="registrarAvance()" >
-            {{isLoading ? 'Guardando...' : 'Registrar Usuario'}}
+            {{isLoading ? 'Guardando...' : 'Registrar Avance'}}
           </button>
       </div>
 
