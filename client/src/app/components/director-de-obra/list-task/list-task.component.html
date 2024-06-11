@@ -10,6 +10,7 @@
               <th class="text-center">Fecha de Asignacion</th>
               <th class="text-center">Fecha Estimada</th>
               <th class="text-center">Estado</th>
+              <th class="text-center">Detalles</th>
             </tr>
           </thead>
   
@@ -22,7 +23,9 @@
               <td>{{tarea.fecha_asignacion}}</td>
               <td>{{tarea.fecha_estimada}}</td>
               <td>{{tarea.status}}</td>
-              <td></td>
+              <td>
+                <button class="btn btn-dark " (click)="detalles(tarea.tareaId)">Detalles</button>
+              </td>
           </tbody>
   
         </table>

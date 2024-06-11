@@ -69,10 +69,14 @@ export class ListTaskComponent {
 
 }
 
-async setNombreUsuario() {
-  this.tareas = await Promise.all(this.tareas.map(async tarea => {
-      const capatazNombre = await this.usuarioService.getUsuarioById(tarea.capatazId).toPromise();
-      return { ...tarea, capatazNombre: capatazNombre.nombre };
-  }));
-}
+  async setNombreUsuario() {
+    this.tareas = await Promise.all(this.tareas.map(async tarea => {
+        const capatazNombre = await this.usuarioService.getUsuarioById(tarea.capatazId).toPromise();
+        return { ...tarea, capatazNombre: capatazNombre.nombre };
+    }));
+  }
+
+  detalles(id: string) {
+    console.log("hola")
+  }
 }
