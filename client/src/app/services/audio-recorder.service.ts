@@ -51,10 +51,10 @@ export class AudioRecorderService {
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           audioRef.getDownloadURL().subscribe(
-            (url) => {
+            (url: any) => {
               this.downloadURL = url;
             },
-            (error) => {
+            (error: any) => {
               console.error('Error al obtener URL de descarga:', error);
             }
           );

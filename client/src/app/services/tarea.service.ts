@@ -22,4 +22,8 @@ export class TareaService {
     return this.http.get('http://127.0.0.1:8000/tarea', { params: params });
   }
 
+  traerTarea(id: string): Observable<any> {
+    return this.http.get('http://127.0.0.1:8000/tarea/' + id);
+  }
+
 }

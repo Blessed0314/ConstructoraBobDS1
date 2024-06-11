@@ -35,6 +35,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ListTaskComponent } from './components/director-de-obra/list-task/list-task.component';
 import { RecordingComponent } from './components/shared/recording/recording.component';
+import { TaskDetailComponent } from './components/director-de-obra/task-detail/task-detail.component';
 
 
 
@@ -59,6 +60,7 @@ import { RecordingComponent } from './components/shared/recording/recording.comp
     ObraDetailComponent,
     ListTaskComponent,
     RecordingComponent,
+    TaskDetailComponent,
   ],
   imports: [
     BrowserModule,

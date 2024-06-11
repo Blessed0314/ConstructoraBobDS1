@@ -9,6 +9,7 @@ import { UserDetailComponent } from './components/gerente/user-detail/user-detai
 import { TaskComponent } from './components/director-de-obra/task/task.component';
 import { ListObrasComponent } from './components/gerente/list-obras/list-obras.component';
 import { ListTaskComponent } from './components/director-de-obra/list-task/list-task.component';
+import { TaskDetailComponent } from './components/director-de-obra/task-detail/task-detail.component';
 
 import { GerenteGuard} from './guards/gerente.guard';
 import { ObrasComponent } from './components/gerente/obras/obras.component';
@@ -31,7 +32,8 @@ const routes: Routes = [
     {path: 'list-obras', component:ListObrasComponent, canActivate: [GestionObrasGuard]},
     {path: 'task/:id', component:TaskComponent, canActivate: [DirectorObraGuard]},
     {path: 'list-task/:id', component:ListTaskComponent, canActivate: [ManagementTask]},
-    {path: 'avances/:id', component:AvancesComponent, canActivate: [ManagementTask]},
+    {path: 'avances/:id', component:AvancesComponent, canActivate: [GestionObrasGuard]},
+    {path: 'taskDetail/:id', component:TaskDetailComponent, canActivate: [ManagementTask]},
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: '**' , pathMatch: 'full', redirectTo: 'home'}
   ]},
