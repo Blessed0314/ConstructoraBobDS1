@@ -1,5 +1,13 @@
 @import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
 
+body {
+  background-image: radial-gradient(circle at 50% 12.41%, #0062ff 0, #0058ff 16.67%, #484bfe 33.33%, #783cf2 50%, #9826e4 66.67%, #b000d5 83.33%, #c300c4 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
 .img-thumb {
   width: 50px;
   height: 50px;
