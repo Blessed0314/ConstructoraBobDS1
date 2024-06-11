@@ -19,6 +19,7 @@ export class AvancesComponent {
   files: File[] = [];
   recordedAudioUrl: string | null = null;
   tareaId: string = '';
+  recording: boolean = false;
 
   datos: any = {}
 
@@ -32,6 +33,7 @@ export class AvancesComponent {
 
   startRecording() {
     this.audioRecorderService.startRecording();
+    this.recording = true;
   }
 
   stopRecording() {
@@ -44,6 +46,7 @@ export class AvancesComponent {
       this.recordedAudioUrl = this.audioRecorderService.getUrl();
       console.log(this.recordedAudioUrl);
       this.datos.audios = this.recordedAudioUrl;
+      this.recording = false;
     },3000);
   }
 }
