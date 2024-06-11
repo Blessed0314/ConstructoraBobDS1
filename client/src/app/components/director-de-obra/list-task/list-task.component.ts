@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TareaService } from '../../../services/tarea.service';
 import { UsuarioService } from '../../../services/usuario.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -28,12 +28,13 @@ export class ListTaskComponent {
   constructor(
     public tareaService: TareaService,
     public route: ActivatedRoute,
-    public usuarioService: UsuarioService
+    public usuarioService: UsuarioService,
+    private router: Router
   ){
     this.route.params.subscribe(params => {
       this.obraId = params['id'];
     });
-  
+
     forkJoin({
       tareas: this.tareaService.traerTareas(this.obraId),
       tareaId: this.tareaService.traerTareasId()
@@ -67,7 +68,7 @@ export class ListTaskComponent {
         console.log(usuario.nombre)
     });
 
-}
+  }
 
   async setNombreUsuario() {
     this.tareas = await Promise.all(this.tareas.map(async tarea => {
@@ -77,6 +78,9 @@ export class ListTaskComponent {
   }
 
   detalles(id: string) {
-    console.log("hola")
+    this.router.navigate(['/dashboard/taskDetail', id]);
+  }
+  crearAvance(id: string) {
+    this.router.navigate(['/dashboard/avances', id]);
   }
 }
