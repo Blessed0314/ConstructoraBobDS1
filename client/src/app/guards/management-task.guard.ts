@@ -13,7 +13,7 @@ export class ManagementTask implements CanActivate {
 
   canActivate(): boolean {
     const role = JSON.parse(localStorage.getItem('user') ?? '{}').data.tipoUsuario;
-    if (role === 'Director de Obra') {
+    if (role === 'Director de Obra' || role === 'Capataz de Obra') {
       return true;
     } else {
       this.router.navigate(['/dashboard']);
