@@ -10,18 +10,50 @@
 
 
         <div class="form-group">
-            <select class="form-select form-control item" id="capatazId" name="directorId" aria-label="Default select example" required [(ngModel)]="datos.capatazId">
+            <select class="form-select form-control item" id="capatazId" name="capatazId" aria-label="Default select example" required [(ngModel)]="datos.capatazId">
               <option disabled>Selecciona el Capataz de la Obra</option>
               <option *ngFor="let capataz of capataces" [value]="capataz.usuarioId">{{capataz.nombre + ' ' + capataz.apellido}}</option>
             </select>
-            <div *ngIf="registroForm.controls['directorId'].invalid && (registroForm.controls['directorId'].dirty || registroForm.controls['directorId'].touched)" class="alert alert-danger">
-                <div *ngIf="registroForm.controls['directorId']?.errors?.['required']">
+            <div *ngIf="registroForm.controls['capatazId'].invalid && (registroForm.controls['capatazId'].dirty || registroForm.controls['capatazId'].touched)" class="alert alert-danger">
+                <div *ngIf="registroForm.controls['capatazId']?.errors?.['required']">
                     Por favor, selecciona el capataz de la Obra.
                 </div>
             </div>
+        </div>
+        <div class="form-group">
+            <ng-select id="obra" [items] = "listaTrabajadores" bindLabel="nombreApellido" bindValue="usuarioId" [(ngModel)]="usuariosSeleccionados" [multiple]="true" placeholder="Selecciona trabajadores..." name="usuarios" #usuarios="ngModel" (change)="actualizarUsuarios()"></ng-select>
+        </div>
+
+        <div class="form-group">
+            <select class="form-select form-control item" id=" tipoDeTarea" name=" tipoDeTarea" aria-label="Default select example" required [(ngModel)]="datos.tipoDeTarea">
+              <option disabled>Selecciona el Tipo de Obra</option>
+              <option *ngFor="let tarea of tipoDeTarea" [value]="tarea">{{tarea}}</option>
+            </select>
+            <div *ngIf="registroForm.controls[' tipoDeTarea'].invalid && (registroForm.controls[' tipoDeTarea'].dirty || registroForm.controls[' tipoDeTarea'].touched)" class="alert alert-danger">
+                <div *ngIf="registroForm.controls[' tipoDeTarea']?.errors?.['required']">
+                    Por favor, selecciona el Tipo de Obra.
+                </div>
+            </div>
           </div>
-  
+
+          <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="datos.descripcion"></textarea>
+        </div>
+
         
+        <div class="form-group">
+            <label for="fechaEstimada">Fecha Estimada:</label>
+            <input type="date" id="fechaEstimada" name="fechaEstimada" class="form-control" [(ngModel)]="datos.fecha_estimada">
+            </div>
+            
+            
+            <div class="form-group btn-class">
+                <button type="submit" class="btn create-account" [disabled]="registroForm.invalid" (click)="crearTarea()" >
+                  {{isLoading ? 'Guardando...' : 'Crear Tarea'}}
+                </button>
+            </div>
+
   
     </form>
   

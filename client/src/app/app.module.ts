@@ -33,6 +33,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ListTaskComponent } from './components/director-de-obra/list-task/list-task.component';
 
 
 
@@ -40,6 +41,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
+    AvancesComponent,
     AppComponent,
     LoginComponent,
     HomeComponent,
@@ -54,7 +56,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     ListObrasComponent,
     TaskComponent,
     ObraDetailComponent,
-    AvancesComponent,
+    ListTaskComponent,
   ],
   imports: [
     BrowserModule,

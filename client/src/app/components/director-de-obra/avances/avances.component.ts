@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { NgForm } from '@angular/forms';
 import { AvancesService } from '../../../services/avances.service';
 import { AudioRecorderService } from '../../../services/audio-recorder.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-avances',
@@ -17,14 +18,16 @@ export class AvancesComponent {
   isLoading = false;
   files: File[] = [];
   recordedAudioUrl: string | null = null;
+  tareaId: string = '';
 
-  datos: any = {
-
-  }
+  datos: any = {}
 
 
-  constructor(private avancesService:AvancesService, private audioRecorderService: AudioRecorderService) {
-
+  constructor(private avancesService:AvancesService, private audioRecorderService: AudioRecorderService, private route: ActivatedRoute, private router: Router) {
+    this.route.params.subscribe(params => {
+      this.tareaId = params['id'];
+      this.datos.tareaId = this.tareaId;
+    })
   }
 
   startRecording() {
@@ -35,22 +38,27 @@ export class AvancesComponent {
   this.audioRecorderService.stopRecording();
   const recordedAudio = this.audioRecorderService.getRecordedAudio();
   if (recordedAudio) {
-    const audioFile = new File([recordedAudio], 'recorded-audio.mp3', { type: 'audio/mpeg' });
-    this.recordedAudioUrl = URL.createObjectURL(audioFile);
-    this.audioRecorderService.uploadAudioToFirebase();
-    this.datos.audios = this.recordedAudioUrl;
+    this.audioRecorderService.uploadAudioToFirebase(this.tareaId);
+    const audioFile = new File([recordedAudio], this.tareaId + '.mp3', { type: 'audio/mpeg' });
+    setTimeout(() => {
+      this.recordedAudioUrl = this.audioRecorderService.getUrl();
+      console.log(this.recordedAudioUrl);
+      this.datos.audios = this.recordedAudioUrl;
+    },3000);
   }
 }
 
 
   async registrarAvance() {
+    console.log(this.datos);
     this.isLoading = true;
+    await this.upload();
 
     this.avancesService.registrarAvance(this.datos).subscribe({
       next: (data: any) => {
         Swal.fire({
-          title: 'Obra: '+ data.nombre + ' ha sido registrada',
-          text: 'Se ha registrado la obra correctamente',
+          title: 'El Avance ha sido registrado',
+          text: 'Avance registrado correctamente',
           icon: 'success',
           showConfirmButton:false,
           timer: 2000
@@ -58,6 +66,7 @@ export class AvancesComponent {
         this.datos = {};
         this.registroForm.resetForm();
         this.isLoading = false;
+        this.router.navigate(['dashboard/list-obras']);
       },
       error: (error) => {
         console.log(error);

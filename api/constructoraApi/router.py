@@ -15,4 +15,4 @@ router.register(r'tipo_obra', TipoObraViewSet, basename='tipo_obra')
 router.register(r'tarea', TareaViewSet, basename='tarea')
 router.register(r'tipo_tarea', TipoTareaViewSet, basename='tipo_tarea')
 
-router.register(r'reporte', ReporteViewSet)
+router.register(r'reporte', ReporteViewSet, )

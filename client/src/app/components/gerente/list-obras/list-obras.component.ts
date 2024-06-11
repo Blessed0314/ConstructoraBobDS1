@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
+
 @Component({
   selector: 'app-list-obras',
   templateUrl: './list-obras.component.html',
@@ -87,8 +88,16 @@ export class ListObrasComponent {
     this.router.navigate(['/dashboard/task', id]);
   }
 
+  
 
   editarObra(id: string) {
     this.router.navigate(['/dashboard/obraDetail', id]);
   }
+
+  verTareas(id: string) {
+    this.router.navigate(['/dashboard/list-task', id]);
+  }
+
 }
+
+
